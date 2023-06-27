@@ -1,4 +1,4 @@
-package com.example.Phase3Project;
+package com.example.mainApp;
 
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
