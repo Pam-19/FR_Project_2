@@ -1,14 +1,16 @@
-package com.example.mainApp.Model;
+package com.example.mainApp.Controller;
 
 
 import org.springframework.data.annotation.Id;
+import org.springframework.stereotype.Component;
+
 import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
 import jakarta.persistence.Table;
 
-
+@Component
 @Entity
 @Table(name = "product")
 public class Product {
@@ -26,6 +28,9 @@ public class Product {
     private double price;
 
     
+    public Product() {
+    	super();
+    }
     public Product(String name, String category) {
         this.name = name;
         this.category = category;

@@ -5,10 +5,10 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.*;
 
-import com.example.mainApp.Model.Product;
+import com.example.mainApp.Controller.Product;
+import com.example.mainApp.Controller.ProductRepo;
 import com.example.mainApp.Model.PurchaseHistory;
 import com.example.mainApp.Model.User;
-import com.example.mainApp.Repository.ProductRepo;
 import com.example.mainApp.Repository.PurchaseHistoryRepo;
 import com.example.mainApp.Repository.UserRepo;
 
