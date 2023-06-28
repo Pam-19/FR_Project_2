@@ -1,4 +1,4 @@
-package com.example.mainApp.Controller;
+package com.example.mainApp;
 
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.stereotype.Repository;

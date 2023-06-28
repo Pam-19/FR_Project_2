@@ -1,4 +1,4 @@
-package com.example.mainApp.Controller;
+package com.example.mainApp;
 
 
 import org.springframework.data.annotation.Id;
