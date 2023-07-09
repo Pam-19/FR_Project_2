@@ -1,4 +1,4 @@
-package com.example.Phase_Project2;
+package com.example.Phase_Project2.Models;
 import org.springframework.data.annotation.Id;
 import org.springframework.stereotype.Component;
 
@@ -12,8 +12,8 @@ import jakarta.persistence.Table;
 @Entity
 @Table(name = "product")
 public class Product {
-    @jakarta.persistence.Id
-    @GeneratedValue(strategy = GenerationType.AUTO)
+    @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
 
     @Column(name = "Name", nullable = false)
@@ -35,8 +35,8 @@ public class Product {
     }
 	    
 	 	
-		@Id
-	    @GeneratedValue(strategy = GenerationType.IDENTITY)
+//		@Id
+//	    @GeneratedValue(strategy = GenerationType.IDENTITY)
 	    public Long getId() { //marking this column as the primary key
 			return id;
 		}

@@ -1,4 +1,4 @@
-package com.example.Phase_Project2;
+package com.example.Phase_Project2.Services;
 
 
 import java.util.List;
@@ -7,6 +7,9 @@ import java.util.Optional;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.stereotype.Service;
+
+import com.example.Phase_Project2.Models.Product;
+import com.example.Phase_Project2.Repositories.ProductRepo;
 
 @Service
 public class ProductService {

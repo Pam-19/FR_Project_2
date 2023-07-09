@@ -1,8 +1,11 @@
-package com.example.Phase_Project2;
+package com.example.Phase_Project2.Controllers;
 
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
+
+import com.example.Phase_Project2.Models.Product;
+import com.example.Phase_Project2.Services.ProductService;
 
 import java.util.List;
 import java.util.Optional;
