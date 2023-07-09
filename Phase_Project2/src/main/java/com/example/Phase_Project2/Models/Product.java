@@ -12,7 +12,7 @@ import jakarta.persistence.Table;
 @Entity
 @Table(name = "product")
 public class Product {
-    @Id
+    @jakarta.persistence.Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
 
@@ -35,8 +35,8 @@ public class Product {
     }
 	    
 	 	
-//		@Id
-//	    @GeneratedValue(strategy = GenerationType.IDENTITY)
+		@Id
+	    @GeneratedValue(strategy = GenerationType.IDENTITY)
 	    public Long getId() { //marking this column as the primary key
 			return id;
 		}
