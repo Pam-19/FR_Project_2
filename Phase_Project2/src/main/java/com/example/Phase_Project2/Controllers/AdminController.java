@@ -3,30 +3,48 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 
 import com.example.Phase_Project2.Models.Product;
+import com.example.Phase_Project2.Models.PurchaseHistory;
+import com.example.Phase_Project2.Models.User;
 //import com.example.Phase_Project2.Models.User;
 import com.example.Phase_Project2.Services.ProductService;
+import com.example.Phase_Project2.Services.PurchaseHistoryService;
+import com.example.Phase_Project2.Services.UserService;
 
+import java.time.LocalDateTime;
 import java.util.List;
-import java.util.Optional;
+
 
 @RestController
 @RequestMapping("/admin")
 public class AdminController {
     private final ProductService productService;
-
+    private final PurchaseHistoryService purchaseHistoryService;
+    private final UserService userService;
+    
     @Autowired
-    public AdminController(ProductService productService) {
+    public AdminController(ProductService productService,PurchaseHistoryService purchaseHistoryService,UserService userService) {
         this.productService = productService;
+		this.purchaseHistoryService = purchaseHistoryService;
+		this.userService = userService;
     }
 
     @GetMapping("/products")
     public List<Product> getAllProducts() {
         return productService.getAllProducts();
     }
+    
+    @GetMapping("/users")
+    public List<User> getAllUSers() {
+        return userService.getAllUsers();
+    }
 
-    @GetMapping("/products/{id}")
-    public Optional<Product> getProductById(@PathVariable Long id) {
-        return productService.getProductById(id);
+//    @GetMapping("/products/{id}")
+//    public Optional<Product> getProductById(@PathVariable Long id) {
+//        return productService.getProductById(id);
+//    }
+    @GetMapping("/products/{category}")
+    public List<Product> getProductByCategory(@PathVariable String category) {
+        return productService.getProductByCategory(category);
     }
 
     @PostMapping("/products")
@@ -45,9 +63,27 @@ public class AdminController {
         return"Successfully Deleted";
         }
         catch(Exception e) {
-        	return "Could not delete";
+        	return "Could not delete...";
         }
     }
+    @GetMapping("/purchase-history")
+    public List<PurchaseHistory> getAllPurchaseHistory() {
+        return purchaseHistoryService.getAllPurchaseHistory();
+    }
+
+//    @GetMapping("/purchase-history/category/{category}")
+//    public List<PurchaseHistory> getPurchaseHistoryByCategory(@PathVariable String category) {
+//        return purchaseHistoryService.getPurchaseHistoryByCategory(category);
+//    }
+    @GetMapping("/purchase-history/{category}")
+    public List<PurchaseHistory> getPurchaseHistoryByCategory(@PathVariable String category) {
+        return purchaseHistoryService.getPurchaseHistoryByCategory(category);
+    }
+    @GetMapping("/purchase-history/date-range")
+    public List<PurchaseHistory> getPurchaseHistoryByDateRange(@RequestParam LocalDateTime startDate, @RequestParam LocalDateTime endDate) {
+        return purchaseHistoryService.getPurchaseHistoryByDateRange(startDate, endDate);
+    }
+
     
     @PostMapping("/login")
 	public String login(@RequestParam String username, @RequestParam String password) {

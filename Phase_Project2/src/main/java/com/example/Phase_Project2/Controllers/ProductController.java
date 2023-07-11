@@ -8,7 +8,6 @@ import com.example.Phase_Project2.Models.Product;
 import com.example.Phase_Project2.Services.ProductService;
 
 import java.util.List;
-import java.util.Optional;
 
 @RestController
 @RequestMapping("/products")
@@ -25,9 +24,13 @@ public class ProductController {
         return productService.getAllProducts();
     }
 
-    @GetMapping("/{id}")
-    public Optional<Product> getProductById(@PathVariable Long id) {
-        return productService.getProductById(id);
+//    @GetMapping("/{id}")
+//    public Optional<Product> getProductById(@PathVariable Long id) {
+//        return productService.getProductById(id);
+//    }
+    @GetMapping("/{category}")
+    public List<Product> getProductByCategory(@PathVariable String category) {
+        return productService.getProductByCategory(category);
     }
 
     @PostMapping

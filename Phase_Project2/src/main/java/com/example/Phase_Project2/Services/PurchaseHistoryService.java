@@ -21,11 +21,20 @@ public class PurchaseHistoryService {
 	
 	public PurchaseHistory savePurchaseHistory(PurchaseHistory purchaseHistory) {
         return purchaseHistoryRepo.save(purchaseHistory);
-	}
-	public List<PurchaseHistory> getPurchaseHistoryByCategory(String category) {
-        return purchaseHistoryRepo.findByCategory(category);
     }
+	
+	
 	 public List<PurchaseHistory> getPurchaseHistoryByDateRange(LocalDateTime startDate, LocalDateTime endDate) {
 	        return purchaseHistoryRepo.findByDateBetween(startDate, endDate);
 	    }
-}
+
+	public List<PurchaseHistory> getAllPurchaseHistory() {
+		return purchaseHistoryRepo.findAll();
+	}
+
+	public List<PurchaseHistory> getPurchaseHistoryByCategory(String category) {
+        return purchaseHistoryRepo.findByProductCategory(category);
+    }
+	}
+	
+

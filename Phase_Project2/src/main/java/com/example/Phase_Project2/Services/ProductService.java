@@ -27,6 +27,10 @@ public class ProductService {
 	    public Optional<Product> getProductById(Long id) {
 	        return productRepository.findById(id);
 	    }
+	    public List<Product> getProductByCategory(String category) {
+	        return productRepository.findByCategory(category);
+	         
+	    }
 
 	    public Product createProduct(Product product) {
 	        return productRepository.save(product);

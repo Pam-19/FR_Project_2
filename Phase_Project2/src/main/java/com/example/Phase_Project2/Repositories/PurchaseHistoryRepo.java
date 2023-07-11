@@ -10,7 +10,9 @@ import com.example.Phase_Project2.Models.PurchaseHistory;
 
 @Repository
 public interface PurchaseHistoryRepo extends JpaRepository<PurchaseHistory,Long>{
-	 List<PurchaseHistory> findByCategory(String category);
+	 //List<PurchaseHistory> findByCategory(String category);
 	    
 	    List<PurchaseHistory> findByDateBetween(LocalDateTime startDate, LocalDateTime endDate);
+
+	    List<PurchaseHistory> findByProductCategory(String category);
 }

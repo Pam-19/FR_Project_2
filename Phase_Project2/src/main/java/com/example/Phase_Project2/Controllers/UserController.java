@@ -1,5 +1,4 @@
 package com.example.Phase_Project2.Controllers;
-
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.PostMapping;
@@ -8,7 +7,9 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 
+import com.example.Phase_Project2.Models.PurchaseHistory;
 import com.example.Phase_Project2.Models.User;
+import com.example.Phase_Project2.Services.PurchaseHistoryService;
 import com.example.Phase_Project2.Services.UserService;
 
 @RestController
@@ -16,10 +17,12 @@ import com.example.Phase_Project2.Services.UserService;
 public class UserController {
 
 	private final UserService userService;
-	
+    private final PurchaseHistoryService purchaseHistoryService;
+
 	@Autowired
-	public UserController(UserService userService) {
+	public UserController(UserService userService,PurchaseHistoryService purchaseHistoryService) {
 		this.userService=userService;
+		this.purchaseHistoryService = purchaseHistoryService;
 	}
 	
 	@PostMapping
@@ -27,6 +30,15 @@ public class UserController {
 		String username = user.getUsername();
 		String password = user.getPassword();
 		return userService.createUser(username, password);	
+	}
+	
+	@PostMapping("/purchase-history")
+	public PurchaseHistory createPurchaseHistory(@RequestBody PurchaseHistory purchaseHistory) {
+//	    // Set the date and time of the purchase
+//	    purchaseHistory.setDate(LocalDateTime.now());
+
+	    // Save the PurchaseHistory object
+	    return purchaseHistoryService.savePurchaseHistory(purchaseHistory);
 	}
 	
 	@DeleteMapping
