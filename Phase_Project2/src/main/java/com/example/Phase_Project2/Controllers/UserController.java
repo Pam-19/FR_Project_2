@@ -1,6 +1,7 @@
 package com.example.Phase_Project2.Controllers;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -27,6 +28,24 @@ public class UserController {
 		String password = user.getPassword();
 		return userService.createUser(username, password);	
 	}
+	
+	@DeleteMapping
+    public String deleteUser(@RequestParam String username, @RequestParam String password) {
+		User user = userService.getUserByUsername(username);
+		if(user!=null) {
+			if( user.getPassword().equals(password)) {
+				userService.deleteUserByName(username);
+				return "Succesfully Deleted";
+		}
+		else { 
+			return "Invalid Password";		
+	}
+			}
+		else {
+			return "No such User exists";
+		}
+        
+    }
 	
 	@PostMapping("/login")
 	public String login(@RequestParam String username, @RequestParam String password) {
