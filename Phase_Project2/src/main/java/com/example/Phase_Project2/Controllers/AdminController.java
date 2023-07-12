@@ -42,7 +42,8 @@ public class AdminController {
 //    @GetMapping("/products/{id}")
 //    public Optional<Product> getProductById(@PathVariable Long id) {
 //        return productService.getProductById(id);
-//    }
+//    } Removed due to ID and Category conflict, Category was prioritized
+    
     @GetMapping("/products/{category}")
     public List<Product> getProductByCategory(@PathVariable String category) {
         return productService.getProductByCategory(category);
@@ -73,11 +74,7 @@ public class AdminController {
     public List<PurchaseHistory> getAllPurchaseHistory() {
         return purchaseHistoryService.getAllPurchaseHistory();
     }
-
-//    @GetMapping("/purchase-history/category/{category}")
-//    public List<PurchaseHistory> getPurchaseHistoryByCategory(@PathVariable String category) {
-//        return purchaseHistoryService.getPurchaseHistoryByCategory(category);
-//    }
+    
     @GetMapping("/purchase-history/{category}")
     public List<PurchaseHistory> getPurchaseHistoryByCategory(@PathVariable String category) {
         return purchaseHistoryService.getPurchaseHistoryByCategory(category);
