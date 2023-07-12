@@ -17,6 +17,7 @@ import java.util.List;
 @RestController
 @RequestMapping("/admin")
 public class AdminController {
+	StringBuilder passkey= new StringBuilder("AdminPassword");
     private final ProductService productService;
     private final PurchaseHistoryService purchaseHistoryService;
     private final UserService userService;
@@ -56,6 +57,8 @@ public class AdminController {
     public Product updateProduct(@PathVariable Long id, @RequestBody Product product) {
         return productService.updateProduct(id, product);
     }
+    
+    
 
     @DeleteMapping("/products/{id}")
     public String deleteProduct(@PathVariable Long id) {
@@ -85,10 +88,19 @@ public class AdminController {
     }
 
     
+    @PutMapping("/password")
+    public String changePassword(@RequestParam String oldPassword, @RequestParam String newPassword) {
+    		if (passkey.toString().equals(oldPassword)) {
+            passkey= new StringBuilder(newPassword);
+            return "Password changed successfully.";
+        }
+        
+        return "Failed to change password";
+    }
     @PostMapping("/login")
 	public String login(@RequestParam String username, @RequestParam String password) {
 		if(username.equals("Admin")) {
-			if( password.equals("AdminPassword")) {
+			if( password.equals(passkey.toString())) {
 			return "Welcome Admin!!!";	
 		}
 		else { 
